@@ -1,0 +1,115 @@
+f@Goldnator:~/ot_viikko1/tiedostoja$ git log --stat | cat
+commit bf5f4d9e457bd35cc20ac16e4fa67d9808510033
+Author: Fanni Franssila <fanni.franssila@gmail.com>
+Date:   Tue Mar 12 19:16:32 2019 +0200
+
+    poistettiin file1 nimettiin file2 uudestaan
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit e7446951d561f9d6b20c52e5ab204e8c079dfaf8
+Author: Fanni Franssila <fanni.franssila@gmail.com>
+Date:   Tue Mar 12 19:12:45 2019 +0200
+
+    lisättiin uusi hakemisto ja sinne kolme tiedostoa
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 4ca336a5b9ec6a297744fe55a49b3c0c68071fe8
+Author: Fanni Franssila <fanni.franssila@gmail.com>
+Date:   Tue Mar 12 19:07:18 2019 +0200
+
+    muokattiin ekaa ja kolmatta
+
+ eka.txt    | 2 +-
+ kolmas.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 9d18a948c0f5fd32924f56042650e02f617dbb18
+Author: Fanni Franssila <fanni.franssila@gmail.com>
+Date:   Tue Mar 12 19:04:53 2019 +0200
+
+    uudelleen nimettiin tiedosto.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit fc1a1ad0b1964c081082cda6440b9f49e843da12
+Author: Fanni Franssila <fanni.franssila@gmail.com>
+Date:   Tue Mar 12 19:03:41 2019 +0200
+
+    poistettiin toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 249de0ba73e3b13c601c8eb8d5eced91840ba02c
+Author: Fanni Franssila <fanni.franssila@gmail.com>
+Date:   Tue Mar 12 19:01:11 2019 +0200
+
+    poistettiin ja lisättiin tiedostoon vähän tekstiä
+
+ tiedosto.txt | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+commit 3975cf8cb893fe26c5bd27c84a80cf332fa85d7e
+Author: Fanni Franssila <fanni.franssila@gmail.com>
+Date:   Tue Mar 12 18:58:39 2019 +0200
+
+    lisättiin paljon tekstiä tiedostoon
+
+ tiedosto.txt | 259 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 259 insertions(+)
+
+commit 89e6061ffa5bdb7e44dff7006cd019eca9dfbf19
+Author: Fanni Franssila <fanni.franssila@gmail.com>
+Date:   Tue Mar 12 18:48:51 2019 +0200
+
+    hakemisto stuff luotu ja sinne lisätty tiedosto
+
+ stuff/neljas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 7c661f4b6989e22cb0b4b284e17d2a604cdd143f
+Author: Fanni Franssila <fanni.franssila@gmail.com>
+Date:   Tue Mar 12 18:47:41 2019 +0200
+
+    muokattiin kolmatta ja toista tiedostoa
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit c15ccf29fc5e7e42db6ed21afb9cccf2deee915d
+Author: Fanni Franssila <fanni.franssila@gmail.com>
+Date:   Tue Mar 12 18:45:06 2019 +0200
+
+    kolmas.txt lisätty
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit d8b0ae1c32ad5f13d26f9335983988c1fea87fba
+Author: Fanni Franssila <fanni.franssila@gmail.com>
+Date:   Tue Mar 12 18:35:26 2019 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 5bbcc34c60cd5b70d203b7dc7bbc87f46e0f8155
+Author: Fanni Franssila <fanni.franssila@gmail.com>
+Date:   Tue Mar 12 18:29:53 2019 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
