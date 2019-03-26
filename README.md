@@ -1,19 +1,12 @@
-# Ohjelmistotekniikka
+# Sudoku
 
-### Viikko 1: Tehtävät
-[gitlog.txt](https://github.com/fannif/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+Sovellus on sudokupeli, jota pystyy pelaamaan ilman sisäänkirjautumista. Sovellus generoi käyttäjälle pelejä, joista se pitää yllä suoritusaikaa. Parhaat suoritukset lisätään ennätyksiin, joita on myös mahdollista tarkastella sovelluksessa.
 
-[komentorivi.txt](https://github.com/fannif/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+### Dokumentaatio
 
-### Viikko 2: Screenshot
-[JacocoScreenshot](/laskarit/viikko2/ot-laskariViikko2jacoco.png)
+##### Alustava määrittelydokumentti
+[Määrittelydokumentti](/dokumentaatio/maarittelydokumentti.md)
 
-### Alustava määrittelydokumentti
-[maarittelydokumentti](/dokumentaatio/maarittelydokumentti.md)
+##### Työaikakirjanpito
+[Työaikakirjanpito](/dokumentaatio/tyoaikakirjanpito.md)
 
-### Työaikakirjanpito
-[tyoaikakirjanpito](/dokumentaatio/tyoaikakirjanpito.md)
-
-
-Kirjoitetaan tänne vähän tavallista, **lihavoitua** ja *vinoa* tekstiä.
-Muutos
