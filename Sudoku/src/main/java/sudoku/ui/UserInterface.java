@@ -12,10 +12,15 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import sudoku.domain.Sudoku;
 
 public class UserInterface extends Application {
     
-    
+    /**
+     * Method that creates the visual user interface and manages it.
+     * @param primaryStage
+     * @throws Exception 
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         
@@ -85,7 +90,14 @@ public class UserInterface extends Application {
         primaryStage.show();
     }
     
+    
+    /**
+     * Main method that starts the program.
+     * @param args 
+     */
     public static void main(String[] args) {
+        Sudoku sudoku = new Sudoku();
+        sudoku.newSudoku();
         launch(args);
     }
     
