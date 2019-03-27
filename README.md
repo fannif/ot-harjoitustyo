@@ -10,3 +10,14 @@ Sovellus on perinteinen sudokupeli, jota pystyy pelaamaan ilman sisäänkirjautu
 ##### Työaikakirjanpito:
 [Työaikakirjanpito](/dokumentaatio/tyoaikakirjanpito.md)
 
+
+### Komentorivitoimintoja
+
+##### Testien ajaminen:
+mvn test
+
+##### Rivikattavuuden selvittäminen:
+mvn test jacoco:report
+
+##### Projektin koodin suorittaminen:
+mvn compile exec:java -Dexec.mainClass=sudoku.ui.UserInterface
