@@ -1,4 +1,8 @@
 ### Työaikakirjanpito
-- Ke 20.03.2019: 38 minuuttia
-- Ti 26.03.2019: 2 tuntia ja 48 minuuttia
-- Ke 27.03.2019: 1 tunti ja 30 minuuttia
+
+| päivä | aika | mitä tein |
+| :----:|:-----| :-----|
+| 20.3. | 0,6  | Tein alustavan määrittelydokumentin |
+| 26.3. | 1,8  | Loin projektitiedoson ja liitin siihen tarvittavat osat. Aloitin käyttöliittymän tekemisen ja siistin README.md:tä. |
+| 27.3. | 1,5  | Aloitin sovelluslogiikan tekemisen domain-pakettiin, ja loin ensimmäiset testimetodit. |
+
