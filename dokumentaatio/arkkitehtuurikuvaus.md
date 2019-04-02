@@ -11,3 +11,7 @@ Käyttöliittymä tulee sisältämään kolme näkymää. Ensimmäinen näkymä 
 Toinen näkymä on pelinäkymä, jossa sudokua täytetään.
 Kolmas näkymä näyttää tietokannasta haettavia ennätyksiä.
 Jokainen näkymä on oma Scene-olionsa.
+
+### Sovelluslogiikka
+Sovelluslogiikka koostuu sudokuruudukkoa esitteävästä luokasta Sudoku. Sillä on oliomuuttujana itse ruudukkoa esittävä taulukko:
+![Luokkakaavio]((/dokumentaatio/sudokuLuokkakaavio.png "Luokkakaavio")
