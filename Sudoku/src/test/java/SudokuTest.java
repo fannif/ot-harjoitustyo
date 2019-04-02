@@ -9,7 +9,7 @@ public class SudokuTest {
     
     public SudokuTest() {
     }
-    
+
     @Before
     public void setUp() {
     }
@@ -21,7 +21,7 @@ public class SudokuTest {
     }
     
     @Test
-    public void konstruktoriLuoOikeinKorkuisenTaulukon() {
+    public void konstruktoriLuoOikeanKorkuisenTaulukon() {
         Sudoku s = new Sudoku();
         assertTrue(s.getSudoku().length == 9);
     }

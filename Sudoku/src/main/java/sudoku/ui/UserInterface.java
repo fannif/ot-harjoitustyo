@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -23,6 +24,8 @@ public class UserInterface extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
+        
+        Sudoku sudoku = new Sudoku();
         
         BorderPane startLayout = new BorderPane();
         startLayout.setStyle("-fx-background-color: #ffedff");
@@ -60,20 +63,29 @@ public class UserInterface extends Application {
         
         options.getChildren().addAll(back, newSudoku, check);
         
-        GridPane sudoku = new GridPane();
-        sudoku.setAlignment(Pos.CENTER);
+        GridPane sudokuGrid = new GridPane();
+        sudokuGrid.setAlignment(Pos.CENTER);
         for (int i=1; i <= 9; i++) {
             for (int j=1; j <= 9; j++) {
-                Button button = new Button();
-                button.setMaxSize(40,40);
-                button.setMinSize(40,40);
-                sudoku.add(button, i, j);
+                if (sudoku.getValue(i-1, j-1) == 0) {
+                    TextArea square = new TextArea();
+                    square.setMaxSize(40,40);
+                    square.setMinSize(40,40);
+                    sudokuGrid.add(square, i, j);
+                } else {
+                    Label square = new Label(" "+sudoku.getValue(i-1, j-1));
+                    square.setMaxSize(40,40);
+                    square.setMinSize(40,40);
+                    square.setFont(Font.font("Verdana", 20));
+                    square.setStyle("-fx-background-color: #eeeeee");
+                    sudokuGrid.add(square, i, j);
+                }                
             }
         }
         
-        sudokuLayout.setCenter(sudoku);
+        sudokuLayout.setCenter(sudokuGrid);
         sudokuLayout.setTop(options);
-        sudokuLayout.setStyle("-fx-background-color: #e5a52b");
+        sudokuLayout.setStyle("-fx-background-color: #edffff");
         
         Scene sudokuScene = new Scene(sudokuLayout, 600, 600);
         
@@ -96,8 +108,6 @@ public class UserInterface extends Application {
      * @param args 
      */
     public static void main(String[] args) {
-        Sudoku sudoku = new Sudoku();
-        sudoku.newSudoku();
         launch(args);
     }
     
