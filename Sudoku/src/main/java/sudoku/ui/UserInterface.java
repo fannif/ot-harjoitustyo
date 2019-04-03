@@ -26,6 +26,7 @@ public class UserInterface extends Application {
     public void start(Stage primaryStage) throws Exception {
         
         Sudoku sudoku = new Sudoku();
+        sudoku.newSudoku();
         
         BorderPane startLayout = new BorderPane();
         startLayout.setStyle("-fx-background-color: #ffedff");

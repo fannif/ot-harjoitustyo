@@ -7,9 +7,6 @@ import sudoku.domain.Sudoku;
 
 public class SudokuTest {
     
-    public SudokuTest() {
-    }
-
     @Before
     public void setUp() {
     }

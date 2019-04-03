@@ -18,7 +18,7 @@ public class Sudoku {
      */
     public Sudoku() {
         grid  = new int[9][9];
-        newSudoku();
+//        newSudoku();
     }
 
     /**
