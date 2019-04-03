@@ -14,4 +14,4 @@ Jokainen näkymä on oma Scene-olionsa.
 
 ### Sovelluslogiikka
 Sovelluslogiikka koostuu sudokuruudukkoa esitteävästä luokasta Sudoku. Sillä on oliomuuttujana itse ruudukkoa esittävä taulukko:
-![Luokkakaavio]((/dokumentaatio/sudokuLuokkakaavio.png "Luokkakaavio")
+![Luokkakaavio](ot-harjoitustyo/dokumentaatio/sudokuLuokkakaavio.png "Luokkakaavio")
