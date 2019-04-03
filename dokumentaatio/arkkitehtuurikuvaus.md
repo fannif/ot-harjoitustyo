@@ -13,6 +13,10 @@ Kolmas näkymä näyttää tietokannasta haettavia ennätyksiä.
 Jokainen näkymä on oma Scene-olionsa.
 
 ### Sovelluslogiikka
-Sovelluslogiikka koostuu sudokuruudukkoa esitteävästä luokasta Sudoku. Sillä on oliomuuttujana itse ruudukkoa esittävä taulukko:
+Sovelluslogiikka koostuu sudokuruudukkoa esitteävästä luokasta Sudoku. Sillä on oliomuuttujana itse ruudukkoa esittävä taulukko. Alustava luokkakaavio:
 
-![Luokkakaavio](https://github.com/fannif/ot-harjoitustyo/blob/master/dokumentaatio/sudokuLuokkakaavio.png "Luokkakaavio")
+![Alustava luokkakaavio](https://github.com/fannif/ot-harjoitustyo/blob/master/dokumentaatio/sudokuLuokkakaavio.png "Alustava luokkakaavio")
+
+Alustava pakkauskaavio:
+
+![Alustava pakkauskaavio](https://github.com/fannif/ot-harjoitustyo/blob/master/dokumentaatio/sudokuPakkauskaavio.png "Alustava pakkauskaavio")
