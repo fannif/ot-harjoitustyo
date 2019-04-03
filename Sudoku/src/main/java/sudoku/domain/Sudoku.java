@@ -223,11 +223,16 @@ public class Sudoku {
 
     /**
      * Method sets the given number in the given coordinates to the sudoku.
+     * The given number needs to be from 1 to 9 or else it is interpreted as 1.
      * @param x The row to which the number is put
      * @param y The column to which the number is put
      * @param value  The number that is put into the sudoku
      */
     public void setValue(int x, int y, int value) {
+        if (value > 9 || value < 1) {
+            grid[x][y] = 1;
+            return;
+        }
         grid[x][y] = value;
     }
 

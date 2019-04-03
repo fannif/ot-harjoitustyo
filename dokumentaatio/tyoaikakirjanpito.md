@@ -8,5 +8,6 @@
 | 2.4.  | 1,7  | Tein arkkitehtuuridokumenttiin luokkakaavion. Tein loppuun sovelluslogiikan toiminnallisuuden uuden sudokun generoimiseen. |
 |       | 0,4  | Lisäsin käyttöliittymään toiminnallisuutta: käyttäjä näkee nyt generoidun sudokun ja voi täyttää sen.
 |       | 1,0  | Tein checkstyle-korjauksia. Yritin selvittää, miksi jacoco-kattavuusprosentti on aivan liian suuri, muokkailemalla testejä.
-| Yht.  | 7,0  | |
+| 3.4.  | 0,8  | Tein lisää testimetodeja. Tein testit Sudoku-luokan isOk- ja setValue-metodeille.
+| Yht.  | 7,8  | |
 
