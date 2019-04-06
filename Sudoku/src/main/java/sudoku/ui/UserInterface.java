@@ -1,7 +1,10 @@
 
 package sudoku.ui;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -16,6 +19,9 @@ import javafx.stage.Stage;
 import sudoku.domain.Sudoku;
 
 public class UserInterface extends Application {
+    
+    private boolean exitSudoku = true;
+    private boolean correctSudoku = true;
     
     /**
      * Method that creates the visual user interface and manages it.
@@ -84,11 +90,39 @@ public class UserInterface extends Application {
             }
         }
         
+        
+        Label timeUsed = new Label();
+                        
         sudokuLayout.setCenter(sudokuGrid);
         sudokuLayout.setTop(options);
+        sudokuLayout.setRight(timeUsed);
         sudokuLayout.setStyle("-fx-background-color: #edffff");
         
         Scene sudokuScene = new Scene(sudokuLayout, 600, 600);
+        
+        BorderPane recordsLayout = new BorderPane();
+        
+        VBox highScores = new VBox(10);
+        highScores.setPadding(new Insets(10));
+        
+        Button back2 = new Button("Return to start menu");
+        Label recordsTitle = new Label("Here are the current high scores");
+        recordsTitle.setFont(Font.font("Verdana", 18));
+        highScores.getChildren().add(recordsTitle);
+        
+        for (int i = 0; i < 10; i++) {
+            Label record = new Label((i+1) + ". ");
+            // Here add also the info from dao list
+            // related to index i
+            record.setFont(Font.font("Verdana", 14));
+            highScores.getChildren().add(record);
+        }
+        
+        recordsLayout.setCenter(highScores);
+        recordsLayout.setTop(back2);
+        recordsLayout.setStyle("-fx-background-color: #ffffed");
+        
+        Scene recordsScene = new Scene(recordsLayout, 600, 600);
         
         play.setOnAction((event) -> {
             primaryStage.setScene(sudokuScene);
@@ -98,10 +132,41 @@ public class UserInterface extends Application {
             primaryStage.setScene(startScene);
         });
         
+        newSudoku.setOnAction((event) -> {
+            sudoku.newSudoku();
+            for (int i=1; i <= 9; i++) {
+                for (int j=1; j <= 9; j++) {
+                    if (sudoku.getValue(i-1, j-1) == 0) {
+                        TextArea square = new TextArea();
+                        square.setMaxSize(40,40);
+                        square.setMinSize(40,40);
+                        sudokuGrid.add(square, i, j);
+                    } else {
+                        Label square = new Label(" "+sudoku.getValue(i-1, j-1));
+                        square.setMaxSize(40,40);
+                        square.setMinSize(40,40);
+                        square.setFont(Font.font("Verdana", 20));
+                        square.setStyle("-fx-background-color: #eeeeee");
+                        sudokuGrid.add(square, i, j);
+                    }                
+                }
+            }
+            primaryStage.setScene(sudokuScene);
+        });
+        
+        records.setOnAction((event) -> {
+            primaryStage.setScene(recordsScene);
+        });
+        
+        back2.setOnAction((event) -> {
+            primaryStage.setScene(startScene);
+        });
         
         primaryStage.setScene(startScene);
         primaryStage.show();
     }
+    
+    
     
     
     /**

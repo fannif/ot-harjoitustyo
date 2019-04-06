@@ -9,5 +9,6 @@
 |       | 0,4  | Lisäsin käyttöliittymään toiminnallisuutta: käyttäjä näkee nyt generoidun sudokun ja voi täyttää sen.
 |       | 1,0  | Tein checkstyle-korjauksia. Yritin selvittää, miksi jacoco-kattavuusprosentti on aivan liian suuri, muokkailemalla testejä.
 | 3.4.  | 0,8  | Tein lisää testimetodeja. Tein testit Sudoku-luokan isOk- ja setValue-metodeille.
-| Yht.  | 7,8  | |
+| 6.4.  | 1,0  | Tiistain lisäysten seuraksi luotiin vielä toiminnallisuus, että High scores-ikkunan luonnos on olemassa, ja sudokuikkunassa voi pyytää uuden sudokun. |
+| Yht.  | 8,8  | |
 
