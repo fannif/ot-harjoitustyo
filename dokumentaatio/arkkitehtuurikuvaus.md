@@ -18,6 +18,7 @@ Sovelluslogiikka koostuu sudokuruudukkoa esitteävästä luokasta Sudoku. Sillä
 ![Alustava luokkakaavio](https://github.com/fannif/ot-harjoitustyo/blob/master/dokumentaatio/sudokuLuokkakaavio.png "Alustava luokkakaavio")
 
 Alla myös versio, johon on lisätty metodien nimet:
+
 ![Alustava luokkakaavio 2](https://github.com/fannif/ot-harjoitustyo/blob/master/dokumentaatio/sudokuLuokkakaavioMetodit.png "Alustava luokkakaavio 2")
 
 Alustava pakkauskaavio:
