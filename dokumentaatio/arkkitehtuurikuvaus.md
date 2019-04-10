@@ -26,5 +26,5 @@ Käyttäjän pyytäessä uutta sudokua, toiminnallisuus etenee seuraavasti:
 ![Uuden sudokun generoiminen](https://github.com/fannif/ot-harjoitustyo/blob/master/dokumentaatio/sudokuSekvenssikaavioUusiSudoku.png "Uuden sudokun generoiminen")
 
 Käyttäjän halutessa tarkistaa sudoku, toiminnallisuus etenee seuraavasti:
-![Sudokun tarkistus](https://github.com/fannif/ot-harjoitustyo/blob/master/dokumentaatio/sudokuSekvenssikaavioTarkistaminen.png "Sudokun tarkistus")
+![Sudokun tarkistus](https://github.com/fannif/ot-harjoitustyo/blob/master/dokumentaatio/sudokuSekvenssikaavioTarkistus.png "Sudokun tarkistus")
 
