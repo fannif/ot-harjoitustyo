@@ -47,7 +47,7 @@ public class Sudoku {
 
         fillRestOfGrid(0, 3);
 
-        replaceValuesWithZero();
+        replaceValuesWithZero(45);
 
     }
 
@@ -204,9 +204,9 @@ public class Sudoku {
      * for the player to fill. The number of squares to be set to
      * zero equal to the value of the integer empty.
      */
-    public void replaceValuesWithZero() {
+    public void replaceValuesWithZero(int zeros) {
 
-        int empty = 45;
+        int empty = zeros;
         Random square = new Random();
 
         while (empty > 0) {

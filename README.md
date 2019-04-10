@@ -24,3 +24,6 @@ mvn test jacoco:report
 
 ##### Projektin koodin suorittaminen:
 mvn compile exec:java -Dexec.mainClass=sudoku.ui.UserInterface
+
+##### Rivikattavuuden selvittäminen:
+mvn jxr:jxr checkstyle:checkstyle

@@ -10,6 +10,8 @@
 |       | 1,0  | Tein checkstyle-korjauksia. Yritin selvittää, miksi jacoco-kattavuusprosentti on aivan liian suuri, muokkailemalla testejä.
 | 3.4.  | 0,8  | Tein lisää testimetodeja. Tein testit Sudoku-luokan isOk- ja setValue-metodeille.
 | 6.4.  | 1,0  | Tiistain lisäysten seuraksi luotiin vielä toiminnallisuus, että High scores-ikkunan luonnos on olemassa, ja sudokuikkunassa voi pyytää uuden sudokun. |
-| 10.4  | 2,5  | Toteutettiin sovelluslogiikkaan metodi sudokun tarkistemiseksi. Lisättiin tarkistustoiminto käyttöliittymän tarkistusnappiin. Korjattiin sudokun isOk-metodia. |
-| Yht.  | 11,3  | |
+| 10.4  | 2,5  | Toteutettiin sovelluslogiikkaan metodi sudokun tarkistamiseksi. Lisättiin tarkistustoiminto käyttöliittymän tarkistusnappiin. Korjattiin sudokun isOk-metodia. |
+|       | 0,8  | Hahmoteltiin käyttöliittymään toimintoa suoritusajan lisäämiseksi muistiin. |
+|       | 1,3  | Parannettiin testikattavuutta. Lisättiin arkkitehtuuritiedostoon sekvenssikaaviot uuden sudokun luomiselle ja sudokun tarkistamiselle.
+| Yht.  | 13,4 | |
 

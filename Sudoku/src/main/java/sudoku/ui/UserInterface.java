@@ -20,6 +20,8 @@ import sudoku.domain.Sudoku;
 public class UserInterface extends Application {
     
     private TextArea[][] squaresToFill = new TextArea[9][9];
+    private long timeStarted;
+    private long timeFinished = 0;
     
     /**
      * Method that creates the visual user interface and manages it.
@@ -68,6 +70,19 @@ public class UserInterface extends Application {
         
         options.getChildren().addAll(back, newSudoku, check);        
         
+        VBox resultInfo = new VBox(10);
+        resultInfo.setPadding(new Insets(10));
+        
+        Label correct = new Label();
+        correct.setFont(Font.font("Verdana", 20));
+        TextArea name = new TextArea("");
+        name.setMaxSize(100, 50);
+        name.setMinSize(100,50);
+        Label recordInstruction = new Label("Add your initials (1 - 3 characters) below.");
+        Button addRecord = new Button("Save");
+        
+        resultInfo.getChildren().add(correct);
+        
         GridPane sudokuGrid = new GridPane();
         sudokuGrid.setAlignment(Pos.CENTER);
         for (int i=1; i <= 9; i++) {
@@ -104,19 +119,13 @@ public class UserInterface extends Application {
                 }                
             }
         }
-        
-        
-        Label timeUsed = new Label();
-        Label correct = new Label();
-        correct.setFont(Font.font("Verdana", 20));
-        
+          
         HBox sudokuTop = new HBox(10);
         sudokuTop.setPadding(new Insets(10));
-        sudokuTop.getChildren().addAll(options, correct);
+        sudokuTop.getChildren().addAll(options, resultInfo);
                         
         sudokuLayout.setCenter(sudokuGrid);
         sudokuLayout.setTop(sudokuTop);
-        sudokuLayout.setRight(timeUsed);
         sudokuLayout.setStyle("-fx-background-color: #edffff");
         
         Scene sudokuScene = new Scene(sudokuLayout, 600, 600);
@@ -147,11 +156,16 @@ public class UserInterface extends Application {
         
         play.setOnAction((event) -> {
             primaryStage.setScene(sudokuScene);
+            timeStarted = System.currentTimeMillis();
         });
         
         back.setOnAction((event) -> {
             correct.setText("");
             primaryStage.setScene(startScene);
+            name.setText("");
+            recordInstruction.setText("Add your initials (1 - 3 characters) below.");
+            resultInfo.getChildren().clear();
+            resultInfo.getChildren().add(correct);
         });
         
         
@@ -194,7 +208,12 @@ public class UserInterface extends Application {
                 }
             }
             correct.setText("");
+            name.setText("");
+            recordInstruction.setText("Add your initials (1 - 3 characters) below.");
+            resultInfo.getChildren().clear();
+            resultInfo.getChildren().add(correct);
             primaryStage.setScene(sudokuScene);
+            timeStarted = System.currentTimeMillis();
         });
         
         check.setOnAction((event) -> {
@@ -224,10 +243,24 @@ public class UserInterface extends Application {
             if (!correctSudoku) {
                 correct.setText("Your sudoku is incorrect");
             } else {
-                correct.setText("Correct!");
+                timeFinished = System.currentTimeMillis();
+                correct.setText("Correct! Time used: " + (timeFinished - timeStarted)/1000 + " seconds");
+                resultInfo.getChildren().addAll(name, recordInstruction, addRecord);
             }
             // Show text incorrect or correct
             // Later add the possibility to save score
+        });
+        
+        addRecord.setOnAction((event) -> {
+            if (name.getText().length() < 4 && name.getText().length() > 0) {
+                // tallenna nimi ja aika tietokantaan
+                name.setText("");
+                recordInstruction.setText("Add your initials (1 - 3 characters) below.");
+                resultInfo.getChildren().clear();
+                resultInfo.getChildren().add(correct);
+            } else {
+                recordInstruction.setText("Your name needs to be 1 - 3 characters long!");
+            }
         });
         
         records.setOnAction((event) -> {

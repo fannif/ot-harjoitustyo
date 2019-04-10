@@ -120,4 +120,80 @@ public class SudokuTest {
         s.setValue(0, 6, 9);
         assertTrue(!s.isOk(1, 7, 9));
     }
+    
+    @Test
+    public void checkSudokuReturnsAllFalseIfEmptyGrid() {
+        boolean works = true;
+        boolean[][] verdict = s.checkSudoku();
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (verdict[i][j]) {
+                    works = false;
+                }
+            }
+        }
+        assertTrue(works);
+    }
+    
+    @Test
+    public void checkSudokuReturnsAllTrueIfCorrectSudoku() {
+        boolean works = true;
+        boolean[][] verdict = s.checkSudoku();
+        int[][] grid = new int[][]{
+            {1,2,3,4,5,6,7,8,9},
+            {4,5,6,7,8,9,1,2,3},
+            {7,8,9,1,2,3,4,5,6},
+            {2,3,4,5,6,7,8,9,1},
+            {5,6,7,8,9,1,2,3,4},
+            {8,9,1,2,3,4,5,6,7},
+            {3,4,5,6,7,8,9,1,2},
+            {6,7,8,9,1,2,3,4,5},
+            {9,1,2,3,4,5,6,7,8}
+            };
+        
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                s.setValue(i, j, grid[i][j]);
+            }
+        }
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (!verdict[i][j]) {
+                    works = false;
+                }
+            }
+        }   
+        assertTrue(!works);
+    }
+    
+    @Test
+    public void replaceZeroReplacesTheRightAmount() {
+        int[][] grid = new int[][]{
+            {1,2,3,4,5,6,7,8,9},
+            {4,5,6,7,8,9,1,2,3},
+            {7,8,9,1,2,3,4,5,6},
+            {2,3,4,5,6,7,8,9,1},
+            {5,6,7,8,9,1,2,3,4},
+            {8,9,1,2,3,4,5,6,7},
+            {3,4,5,6,7,8,9,1,2},
+            {6,7,8,9,1,2,3,4,5},
+            {9,1,2,3,4,5,6,7,8}
+            };
+        
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                s.setValue(i, j, grid[i][j]);
+            }
+        }
+        s.replaceValuesWithZero(40);
+        int amount = 0;
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (s.getValue(i, j) == 0) {
+                    amount++;
+                }
+            }
+        }
+        assertTrue(amount == 40);
+    }
 }
