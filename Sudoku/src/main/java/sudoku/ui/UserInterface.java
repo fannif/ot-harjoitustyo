@@ -1,10 +1,7 @@
 
 package sudoku.ui;
 
-import java.util.Timer;
-import java.util.TimerTask;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,15 +10,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import sudoku.domain.Sudoku;
 
 public class UserInterface extends Application {
     
-    private boolean exitSudoku = true;
-    private boolean correctSudoku = true;
+    private TextArea[][] squaresToFill = new TextArea[9][9];
     
     /**
      * Method that creates the visual user interface and manages it.
@@ -68,33 +66,56 @@ public class UserInterface extends Application {
         Button check = new Button("Check my sudoku");
         check.setFont(Font.font("Verdana", 20));
         
-        options.getChildren().addAll(back, newSudoku, check);
+        options.getChildren().addAll(back, newSudoku, check);        
         
         GridPane sudokuGrid = new GridPane();
         sudokuGrid.setAlignment(Pos.CENTER);
         for (int i=1; i <= 9; i++) {
             for (int j=1; j <= 9; j++) {
                 if (sudoku.getValue(i-1, j-1) == 0) {
+                    squaresToFill[i-1][j-1] = new TextArea();
                     TextArea square = new TextArea();
                     square.setMaxSize(40,40);
                     square.setMinSize(40,40);
+                    square.setFont(Font.font("Verdana", 20));
+                        
+                    int row = i-1;
+                    int column = j-1;
+                        
+                    square.textProperty().addListener((change, from, to) -> {
+                        squaresToFill[row][column].setText(to);
+                    });
+                        
                     sudokuGrid.add(square, i, j);
                 } else {
                     Label square = new Label(" "+sudoku.getValue(i-1, j-1));
                     square.setMaxSize(40,40);
                     square.setMinSize(40,40);
                     square.setFont(Font.font("Verdana", 20));
-                    square.setStyle("-fx-background-color: #eeeeee");
+                    if ((i < 4 && j < 4) || (i > 6 && j > 6) || (i > 6 && j < 4) || (i < 4 && j > 6) || ((i < 7 && i > 3) && (j < 7 && j > 3))) {
+                        square.setStyle("-fx-background-color: #fefeee");
+                    } else {
+                        square.setStyle("-fx-background-color: #eeefef");
+                    }
+                    square.setTextAlignment(TextAlignment.CENTER);
+                    square.setWrapText(true);
                     sudokuGrid.add(square, i, j);
+                    squaresToFill[i-1][j-1] = new TextArea(""+sudoku.getValue(i-1, j-1));
                 }                
             }
         }
         
         
         Label timeUsed = new Label();
+        Label correct = new Label();
+        correct.setFont(Font.font("Verdana", 20));
+        
+        HBox sudokuTop = new HBox(10);
+        sudokuTop.setPadding(new Insets(10));
+        sudokuTop.getChildren().addAll(options, correct);
                         
         sudokuLayout.setCenter(sudokuGrid);
-        sudokuLayout.setTop(options);
+        sudokuLayout.setTop(sudokuTop);
         sudokuLayout.setRight(timeUsed);
         sudokuLayout.setStyle("-fx-background-color: #edffff");
         
@@ -129,8 +150,13 @@ public class UserInterface extends Application {
         });
         
         back.setOnAction((event) -> {
+            correct.setText("");
             primaryStage.setScene(startScene);
         });
+        
+        
+        // TextAreas corresponding to the labels too
+        // This way we can just check them all
         
         newSudoku.setOnAction((event) -> {
             sudoku.newSudoku();
@@ -140,18 +166,68 @@ public class UserInterface extends Application {
                         TextArea square = new TextArea();
                         square.setMaxSize(40,40);
                         square.setMinSize(40,40);
+                        square.setFont(Font.font("Verdana", 20));
+                        
+                        int row = i-1;
+                        int column = j-1;
+                        
+                        square.textProperty().addListener((change, from, to) -> {
+                            squaresToFill[row][column].setText("" + to);
+                        });
+                        
                         sudokuGrid.add(square, i, j);
                     } else {
                         Label square = new Label(" "+sudoku.getValue(i-1, j-1));
                         square.setMaxSize(40,40);
                         square.setMinSize(40,40);
                         square.setFont(Font.font("Verdana", 20));
-                        square.setStyle("-fx-background-color: #eeeeee");
+                        if ((i < 4 && j < 4) || (i > 6 && j > 6) || (i > 6 && j < 4) || (i < 4 && j > 6) || ((i < 7 && i > 3) && (j < 7 && j > 3))) {
+                            square.setStyle("-fx-background-color: #fefeee");
+                        } else {
+                            square.setStyle("-fx-background-color: #eeefef");
+                        }
+                        square.setTextAlignment(TextAlignment.CENTER);
+                        square.setWrapText(true);
                         sudokuGrid.add(square, i, j);
+                        squaresToFill[i-1][j-1] = new TextArea(""+sudoku.getValue(i-1, j-1));
                     }                
                 }
             }
+            correct.setText("");
             primaryStage.setScene(sudokuScene);
+        });
+        
+        check.setOnAction((event) -> {
+            boolean correctSudoku = true;
+            
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    String answer = squaresToFill[i][j].getText();
+                    if (answer.matches("1|2|3|4|5|6|7|8|9")) {
+                        sudoku.setValue(i, j, Integer.parseInt(answer));
+                    } else {
+                        correctSudoku = false;
+                        break;
+                    }
+                }
+            }
+            
+            boolean[][] correctSquares = sudoku.checkSudoku();
+            
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (!correctSquares[i][j]) {
+                        correctSudoku = false;
+                    }
+                }
+            }
+            if (!correctSudoku) {
+                correct.setText("Your sudoku is incorrect");
+            } else {
+                correct.setText("Correct!");
+            }
+            // Show text incorrect or correct
+            // Later add the possibility to save score
         });
         
         records.setOnAction((event) -> {

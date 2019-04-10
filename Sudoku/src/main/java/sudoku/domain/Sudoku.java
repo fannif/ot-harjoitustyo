@@ -70,12 +70,26 @@ public class Sudoku {
         }
         return true;
     }
-
-//    public boolean checkSudoku() {
-//        //Check sudoku by making and returning a boolean[][]
-//        // that has falses on incorrect squares
-//        return true;
-//    }
+    
+    /**
+     * Method checks if the numbers in the filled sudoku
+     * break the rules of the game or not. (No same number in the
+     * same row, column or sub-grid.)
+     *      * 
+     * @return Returns a 9-by-9 grid that has boolean value true in
+     * squares that don't break the rules and boolean value false in
+     * the ones that do.
+     */
+    public boolean[][] checkSudoku() {
+        boolean[][] checkResult = new boolean[9][9];
+        for (int row = 0; row < 9; row++) {
+            for (int column = 0; column < 9; column++) {
+                checkResult[row][column] = isOk(row, column, grid[row][column]);
+            }
+        }
+        
+        return checkResult;
+    }
 
     /**
      * Method fills the remaining squares of a grid
@@ -138,12 +152,18 @@ public class Sudoku {
      */
     public boolean isOk(int row, int column, int number) {
         for (int i = 0; i < 9; i++) {
+            if (i == column) {
+                continue;
+            }
             if (grid[row][i] == number) {
                 return false;
             }
         }
 
         for (int i = 0; i < 9; i++) {
+            if (i == row) {
+                continue;
+            }
             if (grid[i][column] == number) {
                 return false;
             }
@@ -167,6 +187,9 @@ public class Sudoku {
 
         for (int r = rowStart; r < rowStart + 3; r++) {
             for (int s = columnStart; s < columnStart + 3; s++) {
+                if (r == row && s == column) {
+                    continue;
+                }
                 if (grid[r][s] == number) {
                     return false;
                 }
