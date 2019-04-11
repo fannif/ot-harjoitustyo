@@ -203,6 +203,7 @@ public class Sudoku {
      * the number zero. These zeros represent the empty squares
      * for the player to fill. The number of squares to be set to
      * zero equal to the value of the integer empty.
+     * @param zeros The amount of numbers to be switched to zeros.
      */
     public void replaceValuesWithZero(int zeros) {
 
