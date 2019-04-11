@@ -22,8 +22,12 @@ mvn test
 ##### Rivikattavuuden selvittäminen:
 mvn test jacoco:report
 
+##### Jar-tiedoston generointi:
+mvn package
+
 ##### Projektin koodin suorittaminen:
 mvn compile exec:java -Dexec.mainClass=sudoku.ui.UserInterface
 
 ##### Rivikattavuuden selvittäminen:
 mvn jxr:jxr checkstyle:checkstyle
+
