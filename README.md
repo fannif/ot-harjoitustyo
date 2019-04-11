@@ -14,6 +14,10 @@ Sovellus on perinteinen sudokupeli, jota pystyy pelaamaan ilman sisäänkirjautu
 [Arkkitehtuurikuvaus](/dokumentaatio/arkkitehtuurikuvaus.md)
 
 
+### Releaset
+[Viikko 5](https://github.com/fannif/ot-harjoitustyo/releases/tag/viikko5)
+
+
 ### Komentorivitoimintoja
 
 ##### Testien ajaminen:
