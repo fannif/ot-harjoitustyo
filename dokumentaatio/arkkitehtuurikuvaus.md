@@ -13,7 +13,7 @@ Kolmas näkymä näyttää tietokannasta haettavia ennätyksiä.
 Jokainen näkymä on oma Scene-olionsa.
 
 ### Sovelluslogiikka
-Sovelluslogiikka koostuu sudokuruudukkoa esitteävästä luokasta Sudoku sekä pelitulosta esittävästä luokasta Score. Sudokulla on oliomuuttujana itse ruudukkoa esittävä taulukko. Scorella on oliomuuttujina id, alkukirjaimet ja suoritusaika tietokantaan tallentamista varten. Alustava luokkakaavio:
+Sovelluslogiikka koostuu sudokuruudukkoa esitteävästä luokasta Sudoku sekä pelitulosta esittävästä luokasta Score. Sudokulla on oliomuuttujana itse ruudukkoa esittävä taulukko. Scorella on oliomuuttujina id, alkukirjaimet ja suoritusaika tietokantaan tallentamista varten. Sudoku ei tiedä mitään pelituloksista, eivätkä pelitulokset sudokusta. Alustava luokkakaavio:
 
 ![Alustava luokkakaavio](https://github.com/fannif/ot-harjoitustyo/blob/master/dokumentaatio/sudokuLuokkakaavio1104.png "Alustava luokkakaavio")
 
