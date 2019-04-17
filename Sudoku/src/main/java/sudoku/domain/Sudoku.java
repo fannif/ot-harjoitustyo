@@ -47,7 +47,7 @@ public class Sudoku {
 
         fillRestOfGrid(0, 3);
 
-        replaceValuesWithZero(45);
+        replaceValuesWithZero(1);
 
     }
 
@@ -265,6 +265,7 @@ public class Sudoku {
 
     /**
      * Method returns the current sudoku.
+     * Used for testing the constructor.
      * @return Returns current sudoku grid
      */
     public int[][] getSudoku() {

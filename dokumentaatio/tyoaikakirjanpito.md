@@ -15,5 +15,6 @@
 |       | 1,3  | Parannettiin testikattavuutta. Lisättiin arkkitehtuuritiedostoon sekvenssikaaviot uuden sudokun luomiselle ja sudokun tarkistamiselle. |
 | 11.4  | 1,8  | Varmistettiin jarin generoinnin toimivuus ja lisättiin komento README-tiedostoon. Tehtiin release ja päivitettiin luokka- ja pakkauskaaviota. |
 | 17.4  | 1,0  | SQLite-jdbc-tietokannan käyttöönotto sekä SQLDao- ja Score-luokkien täyttäminen. |
+|       | 2,0  | SQL-tietokanta yhdistettiin käyttöliittymän toiminnallisuuteen niin, että ennätykset ja tuloksen lisäys toimivt nyt. |
 | Yht.  | 16,2 | |
 

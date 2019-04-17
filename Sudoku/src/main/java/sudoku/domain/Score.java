@@ -13,16 +13,17 @@ public class Score {
         this.time = time;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public String getInitials() {
         return initials;
     }
 
     public long getTime() {
         return time;
+    }
+    
+    @Override
+    public String toString() {
+        return this.getInitials() + ": " + (this.getTime()/1000) + " sekuntia";
     }
     
 }

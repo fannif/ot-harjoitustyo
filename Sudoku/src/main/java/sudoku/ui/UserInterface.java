@@ -1,6 +1,7 @@
 
 package sudoku.ui;
 
+import java.util.List;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,6 +17,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import sudoku.dao.SQLDao;
+import sudoku.domain.Score;
 import sudoku.domain.Sudoku;
 
 public class UserInterface extends Application {
@@ -34,7 +36,6 @@ public class UserInterface extends Application {
         
         SQLDao database = new SQLDao();
         Sudoku sudoku = new Sudoku();
-        sudoku.newSudoku();
         
         BorderPane startLayout = new BorderPane();
         startLayout.setStyle("-fx-background-color: #ffedff");
@@ -80,47 +81,13 @@ public class UserInterface extends Application {
         TextArea name = new TextArea("");
         name.setMaxSize(100, 50);
         name.setMinSize(100,50);
-        Label recordInstruction = new Label("Add your initials (1 - 3 characters) below.");
+        Label recordInstruction = new Label("Add your initials (1 - 3 characters) above.");
         Button addRecord = new Button("Save");
         
         resultInfo.getChildren().add(correct);
         
         GridPane sudokuGrid = new GridPane();
-        sudokuGrid.setAlignment(Pos.CENTER);
-        for (int i=1; i <= 9; i++) {
-            for (int j=1; j <= 9; j++) {
-                if (sudoku.getValue(i-1, j-1) == 0) {
-                    squaresToFill[i-1][j-1] = new TextArea();
-                    TextArea square = new TextArea();
-                    square.setMaxSize(40,40);
-                    square.setMinSize(40,40);
-                    square.setFont(Font.font("Verdana", 20));
-                        
-                    int row = i-1;
-                    int column = j-1;
-                        
-                    square.textProperty().addListener((change, from, to) -> {
-                        squaresToFill[row][column].setText(to);
-                    });
-                        
-                    sudokuGrid.add(square, i, j);
-                } else {
-                    Label square = new Label(" "+sudoku.getValue(i-1, j-1));
-                    square.setMaxSize(40,40);
-                    square.setMinSize(40,40);
-                    square.setFont(Font.font("Verdana", 20));
-                    if ((i < 4 && j < 4) || (i > 6 && j > 6) || (i > 6 && j < 4) || (i < 4 && j > 6) || ((i < 7 && i > 3) && (j < 7 && j > 3))) {
-                        square.setStyle("-fx-background-color: #fefeee");
-                    } else {
-                        square.setStyle("-fx-background-color: #eeefef");
-                    }
-                    square.setTextAlignment(TextAlignment.CENTER);
-                    square.setWrapText(true);
-                    sudokuGrid.add(square, i, j);
-                    squaresToFill[i-1][j-1] = new TextArea(""+sudoku.getValue(i-1, j-1));
-                }                
-            }
-        }
+        sudokuGrid.setAlignment(Pos.CENTER);       
           
         HBox sudokuTop = new HBox(10);
         sudokuTop.setPadding(new Insets(10));
@@ -133,22 +100,25 @@ public class UserInterface extends Application {
         Scene sudokuScene = new Scene(sudokuLayout, 600, 600);
         
         BorderPane recordsLayout = new BorderPane();
+        recordsLayout.setPadding(new Insets(20));
         
         VBox highScores = new VBox(10);
         highScores.setPadding(new Insets(10));
+        highScores.setAlignment(Pos.CENTER);
         
         Button back2 = new Button("Return to start menu");
-        Label recordsTitle = new Label("Here are the current high scores");
+        back2.setFont(Font.font("Verdana", 18));
+        Label recordsTitle = new Label("Here are the current high scores: ");
         recordsTitle.setFont(Font.font("Verdana", 18));
         highScores.getChildren().add(recordsTitle);
         
-        for (int i = 0; i < 10; i++) {
-            Label record = new Label((i+1) + ". ");
-            // Here add also the info from dao list
-            // related to index i
-            record.setFont(Font.font("Verdana", 14));
-            highScores.getChildren().add(record);
-        }
+//        for (int i = 0; i < 10; i++) {
+//            Label record = new Label((i+1) + ". ");
+//            // Here add also the info from dao list
+//            // related to index i
+//            record.setFont(Font.font("Verdana", 14));
+//            highScores.getChildren().add(record);
+//        }
         
         recordsLayout.setCenter(highScores);
         recordsLayout.setTop(back2);
@@ -157,6 +127,41 @@ public class UserInterface extends Application {
         Scene recordsScene = new Scene(recordsLayout, 600, 600);
         
         play.setOnAction((event) -> {
+            sudoku.newSudoku();
+            for (int i=1; i <= 9; i++) {
+                for (int j=1; j <= 9; j++) {
+                    if (sudoku.getValue(i-1, j-1) == 0) {
+                        squaresToFill[i-1][j-1] = new TextArea();
+                        TextArea square = new TextArea();
+                        square.setMaxSize(40,40);
+                        square.setMinSize(40,40);
+                        square.setFont(Font.font("Verdana", 20));
+                        
+                        int row = i-1;
+                        int column = j-1;
+                        
+                        square.textProperty().addListener((change, from, to) -> {
+                            squaresToFill[row][column].setText(to);
+                        });
+                        
+                        sudokuGrid.add(square, i, j);
+                    } else {
+                        Label square = new Label(" "+sudoku.getValue(i-1, j-1));
+                        square.setMaxSize(40,40);
+                        square.setMinSize(40,40);
+                        square.setFont(Font.font("Verdana", 20));
+                        if ((i < 4 && j < 4) || (i > 6 && j > 6) || (i > 6 && j < 4) || (i < 4 && j > 6) || ((i < 7 && i > 3) && (j < 7 && j > 3))) {
+                            square.setStyle("-fx-background-color: #fefeee");
+                        } else {
+                            square.setStyle("-fx-background-color: #eeefef");
+                        }
+                        square.setTextAlignment(TextAlignment.CENTER);
+                        square.setWrapText(true);
+                        sudokuGrid.add(square, i, j);
+                        squaresToFill[i-1][j-1] = new TextArea(""+sudoku.getValue(i-1, j-1));
+                    }                
+                }
+            }
             primaryStage.setScene(sudokuScene);
             timeStarted = System.currentTimeMillis();
         });
@@ -165,7 +170,7 @@ public class UserInterface extends Application {
             correct.setText("");
             primaryStage.setScene(startScene);
             name.setText("");
-            recordInstruction.setText("Add your initials (1 - 3 characters) below.");
+            recordInstruction.setText("Add your initials (1 - 3 characters) above.");
             resultInfo.getChildren().clear();
             resultInfo.getChildren().add(correct);
         });
@@ -211,7 +216,7 @@ public class UserInterface extends Application {
             }
             correct.setText("");
             name.setText("");
-            recordInstruction.setText("Add your initials (1 - 3 characters) below.");
+            recordInstruction.setText("Add your initials (1 - 3 characters) above.");
             resultInfo.getChildren().clear();
             resultInfo.getChildren().add(correct);
             primaryStage.setScene(sudokuScene);
@@ -249,15 +254,16 @@ public class UserInterface extends Application {
                 correct.setText("Correct! Time used: " + (timeFinished - timeStarted)/1000 + " seconds");
                 resultInfo.getChildren().addAll(name, recordInstruction, addRecord);
             }
-            // Show text incorrect or correct
-            // Later add the possibility to save score
         });
         
         addRecord.setOnAction((event) -> {
             if (name.getText().length() < 4 && name.getText().length() > 0) {
-                // tallenna nimi ja aika tietokantaan
+                long time = timeFinished - timeStarted;
+                
+                database.create(new Score(0, name.getText(), time));
+                
                 name.setText("");
-                recordInstruction.setText("Add your initials (1 - 3 characters) below.");
+                recordInstruction.setText("Add your initials (1 - 3 characters) above.");
                 resultInfo.getChildren().clear();
                 resultInfo.getChildren().add(correct);
             } else {
@@ -266,6 +272,24 @@ public class UserInterface extends Application {
         });
         
         records.setOnAction((event) -> {
+            highScores.getChildren().clear();
+            highScores.getChildren().add(recordsTitle);
+            List<Score> scores = database.list();
+            
+            if (scores.isEmpty()) {
+                Label noScores = new Label("No scores yet!");
+                noScores.setFont(Font.font("Verdana", 18));
+                highScores.getChildren().add(noScores);
+            } else {
+                for (int i = 0; i < scores.size(); i++) {
+                    if ( i >= 10) {
+                        break;
+                    }
+                    Label record = new Label((i+1) + ". " + scores.get(i).toString());
+                    record.setFont(Font.font("Verdana", 18));
+                    highScores.getChildren().add(record);
+                }
+            }
             primaryStage.setScene(recordsScene);
         });
         

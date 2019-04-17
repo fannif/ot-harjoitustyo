@@ -28,40 +28,49 @@ public class SQLDao {
         connection.close();
     }
     
-    public void create(Score score) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:sqlite:./scores.db");
+    public void create(Score score) {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:./scores.db");
         
-        PreparedStatement stmt = connection.prepareStatement(
-              "INSERT INTO Scores (initials, time)"
-              + " VALUES (?, ?)"
-        );
-        stmt.setString(1, score.getInitials());
-        stmt.setLong(2, score.getTime());
+            PreparedStatement stmt = connection.prepareStatement(
+                  "INSERT INTO Scores (initials, time)"
+                  + " VALUES (?, ?)"
+            );
+            stmt.setString(1, score.getInitials());
+            stmt.setLong(2, score.getTime());
         
-        stmt.executeUpdate();
-        stmt.close();
-        connection.close();
+            stmt.executeUpdate();
+            stmt.close();
+            connection.close();
+        
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
-    public List<Score> list() throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:sqlite:./scores.db");
-        
-        PreparedStatement stmt = connection.prepareStatement(
-              "SELECT * FROM Scores"
-              + " ORDER BY time DESC"
-        );
-        
-        ResultSet rs = stmt.executeQuery();
-        
+    public List<Score> list() {
         List<Score> scores = new ArrayList<>();
         
-        while (rs.next()) {
-            scores.add(new Score(rs.getInt("id"), rs.getString("initials"), rs.getLong("time")));
-        }
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:./scores.db");
         
-        stmt.executeUpdate();
-        stmt.close();
-        connection.close();
+            PreparedStatement stmt = connection.prepareStatement(
+                  "SELECT * FROM Scores"
+                  + " ORDER BY time ASC;"
+            );
+        
+            ResultSet rs = stmt.executeQuery();
+        
+            while (rs.next()) {
+                scores.add(new Score(rs.getInt("id"), rs.getString("initials"), rs.getLong("time")));
+            }
+        
+            stmt.close();
+            connection.close();
+        
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
         
         return scores;
     }
