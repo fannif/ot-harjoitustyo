@@ -47,7 +47,7 @@ public class Sudoku {
 
         fillRestOfGrid(0, 3);
 
-        replaceValuesWithZero(1);
+        replaceValuesWithZero(45);
 
     }
 

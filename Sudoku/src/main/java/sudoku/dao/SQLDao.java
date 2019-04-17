@@ -11,10 +11,18 @@ import sudoku.domain.Score;
 
 public class SQLDao {
     
+    /**
+     * Constructor method. Calls createTable to create a table if the database is empty to avoid errors.
+     * @throws SQLException if an error emerges while connecting to the database or carrying out an SQL-statement.
+     */
     public SQLDao() throws SQLException {
         createTable();
     }
     
+    /**
+     * Method that creates the Scores-table into the database if it does not yet exist.
+     * @throws SQLException if an error is faced when trying to connect to the database or carry out the SQL-statement.
+     */
     public void createTable() throws SQLException {
         Connection connection = DriverManager.getConnection("jdbc:sqlite:./scores.db");
         
@@ -28,6 +36,10 @@ public class SQLDao {
         connection.close();
     }
     
+    /**
+     * Method adds a new score to the database.
+     * @param score The Score-object's initials and time will be used for the new row to be added to the database.
+     */
     public void create(Score score) {
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlite:./scores.db");
@@ -48,6 +60,10 @@ public class SQLDao {
         }
     }
     
+    /**
+     * Method used to list the scores in the database, sorted by time in an ascending order.
+     * @return Returns a list of the scores in the database sorted by column time in an ascending order.
+     */
     public List<Score> list() {
         List<Score> scores = new ArrayList<>();
         
