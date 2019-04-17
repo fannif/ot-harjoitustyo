@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import sudoku.dao.SQLDao;
 import sudoku.domain.Sudoku;
 
 public class UserInterface extends Application {
@@ -31,6 +32,7 @@ public class UserInterface extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         
+        SQLDao database = new SQLDao();
         Sudoku sudoku = new Sudoku();
         sudoku.newSudoku();
         

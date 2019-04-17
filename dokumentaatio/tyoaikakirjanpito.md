@@ -14,5 +14,6 @@
 |       | 0,8  | Hahmoteltiin käyttöliittymään toimintoa suoritusajan lisäämiseksi muistiin. |
 |       | 1,3  | Parannettiin testikattavuutta. Lisättiin arkkitehtuuritiedostoon sekvenssikaaviot uuden sudokun luomiselle ja sudokun tarkistamiselle. |
 | 11.4  | 1,8  | Varmistettiin jarin generoinnin toimivuus ja lisättiin komento README-tiedostoon. Tehtiin release ja päivitettiin luokka- ja pakkauskaaviota. |
-| Yht.  | 15,2 | |
+| 17.4  | 1,0  | SQLite-jdbc-tietokannan käyttöönotto sekä SQLDao- ja Score-luokkien täyttäminen. |
+| Yht.  | 16,2 | |
 
