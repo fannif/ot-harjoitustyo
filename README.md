@@ -35,3 +35,6 @@ mvn compile exec:java -Dexec.mainClass=sudoku.ui.UserInterface
 ##### Rivikattavuuden selvittäminen:
 mvn jxr:jxr checkstyle:checkstyle
 
+##### Javadocin generointi:
+mvn javadoc:javadoc
+

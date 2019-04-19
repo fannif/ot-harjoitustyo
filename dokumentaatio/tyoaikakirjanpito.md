@@ -17,6 +17,7 @@
 | 17.4. | 1,0  | SQLite-jdbc-tietokannan käyttöönotto sekä SQLDao- ja Score-luokkien täyttäminen. |
 |       | 2,0  | SQL-tietokanta yhdistettiin käyttöliittymän toiminnallisuuteen niin, että ennätykset ja tuloksen lisäys toimivat nyt. |
 |       | 1,0  | Testattiin, että tietokanta toimii jar:in kanssa myös Windowsissa. Tehtiin checkstyle-korjauksia. |
-| 19.4. | 2,5  | Pelissä on nyt helppo ja normaali sudoku. Luotiin sitä varten tietokantaan kaksi erillistä taulua ja muokattiin käyttöliittymää. Muutettiin SQLDao rajapinnaksi. |
-| Yht.  | 21,7 | |
+| 19.4. | 2,5  | Pelissä on nyt helppo ja normaali sudoku. Luotiin sitä varten tietokantaan kaksi erillistä taulua ja muokattiin käyttöliittymää. Muutettiin SQLDao rajapinnaksi. Lisättiin testejä. |
+|       | 0,8  | Tehtiin uudet luokka- ja pakkauskaaviot, koska vanhat eivät enää vastanneet ohjelmaa. |
+| Yht.  | 22,5 | |
 

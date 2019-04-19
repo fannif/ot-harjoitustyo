@@ -13,17 +13,13 @@ Kolmas näkymä näyttää tietokannasta haettavia ennätyksiä.
 Jokainen näkymä on oma Scene-olionsa.
 
 ### Sovelluslogiikka
-Sovelluslogiikka koostuu sudokuruudukkoa esitteävästä luokasta Sudoku sekä pelitulosta esittävästä luokasta Score. Sudokulla on oliomuuttujana itse ruudukkoa esittävä taulukko. Scorella on oliomuuttujina id, alkukirjaimet ja suoritusaika tietokantaan tallentamista varten. Sudoku ei tiedä mitään pelituloksista, eivätkä pelitulokset sudokusta. Alustava luokkakaavio:
+Sovelluslogiikka koostuu sudokuruudukkoa esitteävästä luokasta Sudoku sekä pelitulosta esittävästä luokasta Score. Sudokulla on oliomuuttujana itse ruudukkoa esittävä taulukko. Scorella on oliomuuttujina id, alkukirjaimet ja suoritusaika tietokantaan tallentamista varten. Sudoku ei tiedä mitään pelituloksista, eivätkä pelitulokset sudokusta. Luokkakaavio:
 
-![Alustava luokkakaavio](https://github.com/fannif/ot-harjoitustyo/blob/master/dokumentaatio/sudokuLuokkakaavio1104.png "Alustava luokkakaavio")
+![Luokkakaavio](https://github.com/fannif/ot-harjoitustyo/blob/master/dokumentaatio/sudokuLuokkakaavio1904.png "Luokkakaavio")
 
-Alla myös versio Sudoku-luokasta, johon on lisätty metodien nimet:
+Luokka-/pakkauskaavio:
 
-![Alustava luokkakaavio 2](https://github.com/fannif/ot-harjoitustyo/blob/master/dokumentaatio/sudokuLuokkakaavioMetodit.png "Alustava luokkakaavio 2")
-
-Alustava pakkauskaavio:
-
-![Alustava pakkauskaavio](https://github.com/fannif/ot-harjoitustyo/blob/master/dokumentaatio/sudokuPakkauskaavio1104.png "Alustava pakkauskaavio")
+![Pakkauskaavio](https://github.com/fannif/ot-harjoitustyo/blob/master/dokumentaatio/sudokuPakkauskaavio1904.png "Pakkauskaavio")
 
 ### Oleellisia toiminnallisuuksia
 Käyttäjän pyytäessä uutta sudokua, toiminnallisuus etenee seuraavasti:

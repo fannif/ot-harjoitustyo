@@ -30,7 +30,7 @@ public class UserInterface extends Application {
     /**
      * Method that creates the visual user interface and manages it.
      * @param primaryStage
-     * @throws Exception 
+     * @throws Exception if an exception occurs.
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -293,6 +293,13 @@ public class UserInterface extends Application {
         primaryStage.show();
     }
     
+    /**
+     * Method prepares the sudoku that will be shown to the user.
+     * Also adds actions to the squares to be filled by the user
+     * so that the sudoku can be checked later.
+     * @param sudoku The sudoku that with the information to be shown to the user.
+     * @param sudokuGrid The visual representation of the sudoku.
+     */
     public void showSudoku(Sudoku sudoku, GridPane sudokuGrid) {
 
             for (int i=1; i <= 9; i++) {
