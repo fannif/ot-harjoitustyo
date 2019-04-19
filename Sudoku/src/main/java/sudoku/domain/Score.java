@@ -29,6 +29,10 @@ public class Score {
         return time;
     }
     
+    public int getId() {
+        return id;
+    }
+    
     @Override
     public String toString() {
         return this.getInitials() + ": " + (this.getTime() / 1000) + " sekuntia";

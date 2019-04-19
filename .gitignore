@@ -10,3 +10,4 @@ Sudoku/target
 
 SudokuGame.jar
 /Sudoku/scores.db
+/Sudoku/testDB.db

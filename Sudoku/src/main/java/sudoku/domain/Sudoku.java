@@ -11,19 +11,21 @@ import java.util.Random;
 public class Sudoku {
 
     private int[][] grid;
+    private int difficulty;
 
     /**
-     * Initializes a new sudoku-grid and fills in some numbers.
+     * Initializes a new sudoku-grid with all zeros.
      * Constructor.
      */
     public Sudoku() {
         grid  = new int[9][9];
-//        newSudoku();
+        difficulty = 50;
     }
 
     /**
      * Method creates a new sudoku.
-     * First it fills the grid so that it is a solved sudoku.
+     * First it empties and then fills the grid so that it is a solved sudoku.
+     * Starts by filling it diagonally.
      * Then it replaces some of the numbers with zeros.
      */
     public void newSudoku() {
@@ -47,7 +49,7 @@ public class Sudoku {
 
         fillRestOfGrid(0, 3);
 
-        replaceValuesWithZero(45);
+        replaceValuesWithZero(this.difficulty);
 
     }
 
@@ -93,7 +95,7 @@ public class Sudoku {
 
     /**
      * Method fills the remaining squares of a grid
-     * whose diagonal boxes have been filled.
+     * whose diagonal (from top right to bottom left) sub-grids have been filled.
      * @param row The row that is currently being looked at.
      * @param column The column that is currently being looked at.
      * @return Returns true if the grid was filled.
@@ -114,10 +116,13 @@ public class Sudoku {
                 column = 3;
             }
         } else if (row < 6) {
-            if (column == (int) (row / 3) * 3) {
+            if (column == 3) {
                 column += 3;
             }
         } else {
+            // If column == 6 we will be in the last box
+            // which is one of the diagonals, so skip to
+            // next row, because we don't wanna touch it
             if (column == 6) {
                 row++;
                 column = 0;
@@ -261,6 +266,22 @@ public class Sudoku {
      */
     public int getValue(int x, int y) {
         return grid[x][y];
+    }
+    
+    /**
+     * Sets the number of spaces to be left blank at first.
+     * @param difficulty The number of spaces to be blank at first.
+     */
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+    
+    /**
+     * Returns the number of spaces to be blank in an unfilled grid.
+     * @return The number of blank spaces in unfilled grid.
+     */
+    public int getDifficulty() {
+        return this.difficulty;
     }
 
     /**

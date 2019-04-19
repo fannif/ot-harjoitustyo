@@ -15,51 +15,57 @@ public class SudokuTest {
     }
     
     @Test
-    public void konstruktoriLuoOikeanLevyisenSudokun() {
+    public void constructorCreatesASudokuOfCorrectWidth() {
         assertTrue(s.getSudoku()[0].length == 9);
     }
     
     @Test
-    public void konstruktoriLuoOikeanKorkuisenTaulukon() {
+    public void constructorCreatesASudokuOfCorrectHeight() {
         assertTrue(s.getSudoku().length == 9);
     }
     
     @Test
-    public void getValuePalauttaaSallitunArvon() {
+    public void getValueReturnsAnAllowedValue() {
         assertTrue(s.getValue(0, 0) < 10 && s.getValue(0, 0) >= 0);
     }
     
     @Test
-    public void setValueAsettaaArvon() {
+    public void setValueSetsTheValue() {
         s.setValue(1, 1, 9);
         assertTrue(s.getValue(1, 1) == 9);
     }
     
     @Test
-    public void setValueKorvaaLiianPienenArvonYhdella() {
+    public void setValueReplacesTooSmallValuesWithOne() {
         s.setValue(0, 0, -1);
         assertTrue(s.getValue(0, 0) == 1);
     }
     
     @Test
-    public void setValueKorvaaLiianSuurenArvonYhdella() {
+    public void setValueReplacesTooBigValuesWithOne() {
         s.setValue(0, 0, 10);
         assertTrue(s.getValue(0, 0) == 1);
     }
     
     @Test
-    public void emptySudokunJalkeenSudokussaPelkkiaNollia() {
+    public void setAndGetDifficultyWork() {
+        s.setDifficulty(1);
+        assertTrue(s.getDifficulty() == 1);
+    }
+    
+    @Test
+    public void emptySudokuFillsSudokuWithZeros() {
         s.emptySudoku();
-        int nollia = 0;
+        int zeros = 0;
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 if (s.getValue(i, j) == 0) {
-                    nollia++;
+                    zeros++;
                 }
             }
         }
         
-        assertTrue(nollia == 81);
+        assertTrue(zeros == 81);
     }
     
     @Test
@@ -195,5 +201,78 @@ public class SudokuTest {
             }
         }
         assertTrue(amount == 40);
+    }
+    
+    @Test
+    public void notInBoxReturnsTrueIfValueIsNotInSubGrid() {
+        s.setValue(1, 1, 1);
+        assertTrue(s.notInBox(0, 0, 2));
+    }
+    
+    @Test
+    public void notInBoxReturnsFalseIfValueIsInSubGrid() {
+        s.setValue(1, 1, 1);
+        assertTrue(!s.notInBox(0, 0, 1));
+    }
+    
+    @Test
+    public void fillRestOfGridFillsNonDiagonalSubgridsCorrectly() {
+        s.fillRestOfGrid(0, 3);
+        boolean works = true;
+        
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (i < 3 && j < 3) {
+                    if (s.getValue(i, j) != 0) {
+                        works = false;
+                    }
+                } else if (i < 3) {
+                    if(!s.isOk(i, j, s.getValue(i, j))) {
+                        works = false;
+                    }
+                } else if (i < 6 && j < 3) {
+                    if(!s.isOk(i, j, s.getValue(i, j))) {
+                        works = false;
+                    }
+                } else if (i < 6 && j < 6) {
+                    if (s.getValue(i, j) != 0) {
+                        works = false;
+                    }
+                } else if (i < 6) {
+                    if(!s.isOk(i, j, s.getValue(i, j))) {
+                        works = false;
+                    }
+                } else if (j < 6) {
+                    if(!s.isOk(i, j, s.getValue(i, j))) {
+                        works = false;
+                    }
+                } else {
+                    if (s.getValue(i, j) != 0) {
+                        works = false;
+                    }
+                }
+            }
+        }
+        
+        assertTrue(works);
+    }
+    
+    @Test
+    public void afterNewSudokuGridIsFilledCorrectly() {
+        s.newSudoku();
+        boolean correct = true;
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (s.getValue(i, j) == 0) {
+                    continue;
+                } 
+                if (!s.isOk(i, j, s.getValue(i, j))) {
+                    correct = false;
+                    break;
+                }
+            }
+        }
+        
+        assertTrue(correct);
     }
 }
