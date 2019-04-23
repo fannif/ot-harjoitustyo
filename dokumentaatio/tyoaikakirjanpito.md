@@ -20,5 +20,8 @@
 | 19.4. | 2,5  | Pelissä on nyt helppo ja normaali sudoku. Luotiin sitä varten tietokantaan kaksi erillistä taulua ja muokattiin käyttöliittymää. Muutettiin SQLDao rajapinnaksi. Lisättiin testejä. |
 |       | 0,8  | Tehtiin uudet luokka- ja pakkauskaaviot, koska vanhat eivät enää vastanneet ohjelmaa. |
 | 23.4. | 2,2  | Päivitettiin arkkitehtuurikuvausta, ja muokattiin Sudokun checkSudoku-metodia. |
-| Yht.  | 24,7 | |
+|       | 0,5  | Tehtiin pieniä muutoksia. Esimerkiksi korjattiin bugi, jossa samasta sudokusta voi tallentaa monta tulosta. |
+|       | 2,6  | Jaettiin Sudokun isOk-metodi pienempiin osiin. Jatkettiin arkkitehtuurikuvausta. |
+|       | 0,5  | Kirjoitettiin käyttöohje. |
+| Yht.  | 28,3 | |
 
