@@ -130,23 +130,12 @@ public class SudokuTest {
     }
     
     @Test
-    public void checkSudokuReturnsAllFalseIfEmptyGrid() {
-        boolean works = true;
-        boolean[][] verdict = s.checkSudoku();
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                if (verdict[i][j]) {
-                    works = false;
-                }
-            }
-        }
-        assertTrue(works);
+    public void checkSudokuReturnsFalseIfEmptyGrid() {
+        assertTrue(!s.checkSudoku());
     }
     
     @Test
-    public void checkSudokuReturnsAllTrueIfCorrectSudoku() {
-        boolean works = true;
-        boolean[][] verdict = s.checkSudoku();
+    public void checkSudokuReturnsTrueIfCorrectSudoku() {
         int[][] grid = new int[][]{
             {1,2,3,4,5,6,7,8,9},
             {4,5,6,7,8,9,1,2,3},
@@ -164,14 +153,8 @@ public class SudokuTest {
                 s.setValue(i, j, grid[i][j]);
             }
         }
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                if (!verdict[i][j]) {
-                    works = false;
-                }
-            }
-        }   
-        assertTrue(!works);
+        
+        assertTrue(s.checkSudoku());
     }
     
     @Test
@@ -208,13 +191,13 @@ public class SudokuTest {
     @Test
     public void notInBoxReturnsTrueIfValueIsNotInSubGrid() {
         s.setValue(1, 1, 1);
-        assertTrue(s.notInBox(0, 0, 2));
+        assertTrue(s.notInBox(0, 0, 2, 0, 0));
     }
     
     @Test
     public void notInBoxReturnsFalseIfValueIsInSubGrid() {
         s.setValue(1, 1, 1);
-        assertTrue(!s.notInBox(0, 0, 1));
+        assertTrue(!s.notInBox(0, 0, 1, 0, 0));
     }
     
     @Test

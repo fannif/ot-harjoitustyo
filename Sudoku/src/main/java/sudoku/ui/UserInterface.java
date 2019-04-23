@@ -27,6 +27,7 @@ public class UserInterface extends Application {
     private TextArea[][] squaresToFill = new TextArea[9][9];
     private long timeStarted;
     private long timeFinished = 0;
+    private boolean checked = false;
     
     /**
      * Method that creates the visual user interface and manages it.
@@ -83,7 +84,7 @@ public class UserInterface extends Application {
         resultInfo.setPadding(new Insets(10));
         
         Label correct = new Label();
-        correct.setFont(Font.font("Verdana", 20));
+        correct.setFont(Font.font("Verdana", 18));
         TextArea name = new TextArea("");
         name.setMaxSize(100, 50);
         name.setMinSize(100,50);
@@ -138,14 +139,6 @@ public class UserInterface extends Application {
         
         highScores.getChildren().add(highScoreLists);
         
-//        for (int i = 0; i < 10; i++) {
-//            Label record = new Label((i+1) + ". ");
-//            // Here add also the info from dao list
-//            // related to index i
-//            record.setFont(Font.font("Verdana", 14));
-//            highScores.getChildren().add(record);
-//        }
-        
         recordsLayout.setCenter(highScores);
         recordsLayout.setTop(back2);
         recordsLayout.setStyle("-fx-background-color: #ffffdc");
@@ -157,6 +150,7 @@ public class UserInterface extends Application {
             sudoku.newSudoku();
             showSudoku(sudoku, sudokuGrid);
             primaryStage.setScene(sudokuScene);
+            checked = false;
             timeStarted = System.currentTimeMillis();
         });
         
@@ -165,6 +159,7 @@ public class UserInterface extends Application {
             sudoku.newSudoku();
             showSudoku(sudoku, sudokuGrid);
             primaryStage.setScene(sudokuScene);
+            checked = false;
             timeStarted = System.currentTimeMillis();
         });
         
@@ -175,11 +170,8 @@ public class UserInterface extends Application {
             recordInstruction.setText("Add your initials (1 - 3 characters) above.");
             resultInfo.getChildren().clear();
             resultInfo.getChildren().add(correct);
+            checked = false;
         });
-        
-        
-        // TextAreas corresponding to the labels too
-        // This way we can just check them all
         
         newSudoku.setOnAction((event) -> {
             sudoku.newSudoku();
@@ -190,6 +182,7 @@ public class UserInterface extends Application {
             resultInfo.getChildren().clear();
             resultInfo.getChildren().add(correct);
             primaryStage.setScene(sudokuScene);
+            checked = false;
             timeStarted = System.currentTimeMillis();
         });
         
@@ -208,21 +201,17 @@ public class UserInterface extends Application {
                 }
             }
             
-            boolean[][] correctSquares = sudoku.checkSudoku();
-            
-            for (int i = 0; i < 9; i++) {
-                for (int j = 0; j < 9; j++) {
-                    if (!correctSquares[i][j]) {
-                        correctSudoku = false;
-                    }
-                }
+            if (!sudoku.checkSudoku()) {
+                correctSudoku = false;
             }
+                    
             if (!correctSudoku) {
                 correct.setText("Your sudoku is incorrect");
-            } else {
+            } else if (!checked) {
                 timeFinished = System.currentTimeMillis();
                 correct.setText("Correct! Time used: " + (timeFinished - timeStarted)/1000 + " seconds");
                 resultInfo.getChildren().addAll(name, recordInstruction, addRecord);
+                checked = true;
             }
         });
         

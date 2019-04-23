@@ -5,8 +5,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * Class represents a sudoku.
- * @author f
+ * Class represents and maintains a sudoku.
  */
 public class Sudoku {
 
@@ -39,7 +38,7 @@ public class Sudoku {
             int number = 1;
             for (int j = 0; j < 3; j++) {
                 for (int k = 0; k < 3; k++) {
-                    while (!notInBox(row, column, number)) { 
+                    while (!notInBox(row, column, number, row + j, column + k)) { 
                         number = random.nextInt(9) + 1;
                     }
                     grid[row + j][column + k] = number;
@@ -60,11 +59,16 @@ public class Sudoku {
      * @param row The row from which the sub-grid starts
      * @param column The column from which the sub-grid starts
      * @param number We are checking if this number is in the sub-grid already
+     * @param skipRow The row to for the number
+     * @param skipColumn The column for the number
      * @return Tells whether the given number was in the sub-grid already
      */
-    public boolean notInBox(int row, int column, int number) {
+    public boolean notInBox(int row, int column, int number, int skipRow, int skipColumn) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
+                if (row + i == skipRow && column + j == skipColumn) {
+                    continue;
+                }
                 if (number == grid[row + i][column + j]) {
                     return false;
                 }
@@ -78,15 +82,16 @@ public class Sudoku {
      * break the rules of the game or not. (No same number in the
      * same row, column or sub-grid.)
      *      * 
-     * @return Returns a 9-by-9 grid that has boolean value true in
-     * squares that don't break the rules and boolean value false in
-     * the ones that do.
+     * @return Returns true if the sudoku is filled correctly.
+     * Otherwise returns false.
      */
-    public boolean[][] checkSudoku() {
-        boolean[][] checkResult = new boolean[9][9];
+    public boolean checkSudoku() {
+        boolean checkResult = true;
         for (int row = 0; row < 9; row++) {
             for (int column = 0; column < 9; column++) {
-                checkResult[row][column] = isOk(row, column, grid[row][column]);
+                if (!isOk(row, column, grid[row][column])) {
+                    checkResult = false;
+                }
             }
         }
         
@@ -111,19 +116,15 @@ public class Sudoku {
             return true;
         }
 
-        if (row < 3) {
-            if (column < 3) {
-                column = 3;
-            }
-        } else if (row < 6) {
-            if (column == 3) {
-                column += 3;
-            }
+        if (row < 3 && column < 3) {
+            column = 3;
+        } else if (row > 2 && row < 6 && column == 3) {
+            column += 3;
         } else {
             // If column == 6 we will be in the last box
             // which is one of the diagonals, so skip to
             // next row, because we don't wanna touch it
-            if (column == 6) {
+            if (column == 6 && row > 5) {
                 row++;
                 column = 0;
                 if (row >= 9) {
@@ -156,22 +157,11 @@ public class Sudoku {
      * @return Returns true if the given number is not yet in the row, column or sub-grid. Otherwise, returns false.
      */
     public boolean isOk(int row, int column, int number) {
-        for (int i = 0; i < 9; i++) {
-            if (i == column) {
-                continue;
-            }
-            if (grid[row][i] == number) {
-                return false;
-            }
-        }
-
-        for (int i = 0; i < 9; i++) {
-            if (i == row) {
-                continue;
-            }
-            if (grid[i][column] == number) {
-                return false;
-            }
+        
+        if (!okRow(row, column, number)) {
+            return false;
+        } else if (!okColumn(row, column, number)) {
+            return false;
         }
 
         int rowStart = 0;
@@ -189,15 +179,43 @@ public class Sudoku {
         } else if (column > 2) {
             columnStart = 3;
         }
-
-        for (int r = rowStart; r < rowStart + 3; r++) {
-            for (int s = columnStart; s < columnStart + 3; s++) {
-                if (r == row && s == column) {
-                    continue;
-                }
-                if (grid[r][s] == number) {
-                    return false;
-                }
+        
+        return notInBox(rowStart, columnStart, number, row, column);
+    }
+    
+    /**
+     * Method checks that the given number is not yet in the given row.
+     * @param row The row for the number given.
+     * @param column The column for the number given.
+     * @param number The number to check from the row.
+     * @return Return true if the number is not yet in the row. Otherwise return false;
+     */
+    public boolean okRow(int row, int column, int number) {
+        for (int i = 0; i < 9; i++) {
+            if (i == column) {
+                continue;
+            }
+            if (grid[row][i] == number) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    /**
+     * Method checks that the given number is not yet in the given row.
+     * @param row The row in which the number might be put.
+     * @param column The column in which the number might be put.
+     * @param number The number to check from the column.
+     * @return Return true if the number is not yet in the column. Otherwise return false;
+     */
+    public boolean okColumn(int row, int column, int number) {
+        for (int i = 0; i < 9; i++) {
+            if (i == row) {
+                continue;
+            }
+            if (grid[i][column] == number) {
+                return false;
             }
         }
         return true;
@@ -219,10 +237,6 @@ public class Sudoku {
             int squareNumber = square.nextInt(81);
             int row = squareNumber / 9;
             int column = squareNumber % 9;
-
-            if (column != 0) {
-                column--;
-            }
 
             if (grid[row][column] == 0) {
                 continue;
