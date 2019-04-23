@@ -19,5 +19,6 @@
 |       | 1,0  | Testattiin, että tietokanta toimii jar:in kanssa myös Windowsissa. Tehtiin checkstyle-korjauksia. |
 | 19.4. | 2,5  | Pelissä on nyt helppo ja normaali sudoku. Luotiin sitä varten tietokantaan kaksi erillistä taulua ja muokattiin käyttöliittymää. Muutettiin SQLDao rajapinnaksi. Lisättiin testejä. |
 |       | 0,8  | Tehtiin uudet luokka- ja pakkauskaaviot, koska vanhat eivät enää vastanneet ohjelmaa. |
-| Yht.  | 22,5 | |
+| 23.4. | 2,2  | Päivitettiin arkkitehtuurikuvausta, ja muokattiin Sudokun checkSudoku-metodia. |
+| Yht.  | 24,7 | |
 
