@@ -10,8 +10,11 @@ Sovellus on perinteinen sudokupeli, jota pystyy pelaamaan ilman sisäänkirjautu
 ##### Työaikakirjanpito:
 [Työaikakirjanpito](/dokumentaatio/tyoaikakirjanpito.md)
 
-##### Alustava arkkitehtuurikuvaus (kesken)
+##### Arkkitehtuurikuvaus
 [Arkkitehtuurikuvaus](/dokumentaatio/arkkitehtuurikuvaus.md)
+
+#### Käyttöohje
+[Käyttöohje](/dokumentaatio/kayttoohje.md)
 
 
 ### Releaset
