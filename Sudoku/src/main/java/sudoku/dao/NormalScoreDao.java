@@ -24,24 +24,6 @@ public class NormalScoreDao implements SQLDao {
     }
     
     /**
-     * Method that creates the NormalScores-table into the database if it does not yet exist.
-     * @throws SQLException if an error is faced when trying to connect to the database or carry out the SQL-statement.
-     */
-    @Override
-    public void createTable() throws SQLException {
-        Connection connection = DriverManager.getConnection(this.database);
-        
-        PreparedStatement stmt = connection.prepareStatement(""
-                + "CREATE TABLE IF NOT EXISTS NormalScores"
-                + " (id SERIAL,"
-                + " initials VARCHAR(3),"
-                + " time BIGINT)");
-        stmt.executeUpdate();
-        stmt.close();
-        connection.close();
-    }
-    
-    /**
      * Method adds a new score to the database.
      * @param score The Score-object's initials and time will be used for the new row to be added to the database.
      */
@@ -96,6 +78,24 @@ public class NormalScoreDao implements SQLDao {
         }
         
         return scores;
+    }
+    
+    /**
+     * Method that creates the NormalScores-table into the database if it does not yet exist.
+     * @throws SQLException if an error is faced when trying to connect to the database or carry out the SQL-statement.
+     */
+    @Override
+    public void createTable() throws SQLException {
+        Connection connection = DriverManager.getConnection(this.database);
+        
+        PreparedStatement stmt = connection.prepareStatement(""
+                + "CREATE TABLE IF NOT EXISTS NormalScores"
+                + " (id SERIAL,"
+                + " initials VARCHAR(3),"
+                + " time BIGINT)");
+        stmt.executeUpdate();
+        stmt.close();
+        connection.close();
     }
     
     /**

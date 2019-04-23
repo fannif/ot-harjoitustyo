@@ -14,6 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import sudoku.dao.EasyScoreDao;
@@ -50,7 +51,7 @@ public class UserInterface extends Application {
         Button normalPlay = new Button("Play game (normal)");
         Button records = new Button("View High Scores");
         
-        welcome.setFont(Font.font("Verdana", 20));
+        welcome.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
         easyPlay.setFont(Font.font("Verdana", 20));
         normalPlay.setFont(Font.font("Verdana", 20));
         records.setFont(Font.font("Verdana", 20));
@@ -114,7 +115,7 @@ public class UserInterface extends Application {
         Button back2 = new Button("Return to start menu");
         back2.setFont(Font.font("Verdana", 18));
         Label recordsTitle = new Label("Here are the current high scores: ");
-        recordsTitle.setFont(Font.font("Verdana", 18));
+        recordsTitle.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
         highScores.getChildren().add(recordsTitle);
         
         HBox highScoreLists = new HBox(10);

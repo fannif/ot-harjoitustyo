@@ -15,7 +15,7 @@ public class EasyScoreDao implements SQLDao {
     private String database;
     
     /**
-     * Constructor method. Calls createTable to create a table if it doesn't exist to avoid errors.
+     * Constructor method. Creates a table if it doesn't exist to avoid errors.
      * @throws SQLException if an error emerges while connecting to the database or carrying out an SQL-statement.
      */
     public EasyScoreDao() throws SQLException {
@@ -24,7 +24,7 @@ public class EasyScoreDao implements SQLDao {
     }
     
     /**
-     * Method that creates the EasyScores-table into the database if it does not yet exist.
+     * Method creates the EasyScores-table if it does not yet exist in the database.
      * @throws SQLException if an error is faced when trying to connect to the database or carry out the SQL-statement.
      */
     @Override
@@ -36,14 +36,16 @@ public class EasyScoreDao implements SQLDao {
                 + " (id SERIAL,"
                 + " initials VARCHAR(3),"
                 + " time BIGINT)");
+        
         stmt.executeUpdate();
         stmt.close();
+        
         connection.close();
     }
     
     /**
-     * Method adds a new score to the database.
-     * @param score The Score-object's initials and time will be used for the new row to be added to the database.
+     * Method adds a new score to the database table EasyScores.
+     * @param score The Score-object's initials and time will be added to the new row to be added to the database.
      */
     @Override
     public void create(Score score) {
@@ -54,11 +56,13 @@ public class EasyScoreDao implements SQLDao {
                   "INSERT INTO EasyScores (initials, time)"
                   + " VALUES (?, ?)"
             );
+            
             stmt.setString(1, score.getInitials());
             stmt.setLong(2, score.getTime());
         
             stmt.executeUpdate();
             stmt.close();
+            
             connection.close();
         
         } catch (SQLException e) {
@@ -89,6 +93,7 @@ public class EasyScoreDao implements SQLDao {
             }
         
             stmt.close();
+            
             connection.close();
         
         } catch (SQLException e) {
