@@ -4,7 +4,7 @@ Sovellus on perinteinen sudokupeli, jota pystyy pelaamaan ilman sisäänkirjautu
 
 ### Dokumentaatio
 
-##### Alustava määrittelydokumentti:
+##### Vaatimusmäärittely:
 [Määrittelydokumentti](/dokumentaatio/maarittelydokumentti.md)
 
 ##### Työaikakirjanpito:
