@@ -24,5 +24,6 @@
 |       | 2,6  | Jaettiin Sudokun isOk-metodi pienempiin osiin. Jatkettiin arkkitehtuurikuvausta. |
 |       | 0,5  | Kirjoitettiin käyttöohje. |
 | 27.4. | 1,5  | Muokattiin testipakkausten nimiä. Siistittiin hiukan koodia. Kirjoitettiin testidokumentti. |
-| Yht.  | 29,8 | |
+|       | 0,4  | Täydennettiin dokumentaaiota. |
+| Yht.  | 30,2 | |
 
