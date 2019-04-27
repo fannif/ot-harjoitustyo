@@ -1,4 +1,4 @@
-package dao;
+package sudoku.dao;
 
 
 import java.sql.Connection;
@@ -10,26 +10,26 @@ import org.junit.After;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
-import sudoku.dao.NormalScoreDao;
+import sudoku.dao.EasyScoreDao;
 import sudoku.dao.SQLDao;
 import sudoku.domain.Score;
 
-public class NormalScoreDaoTest {
+public class EasyScoreDaoTest {
     
-    private SQLDao normal;
+    private SQLDao easy;
     
     @Before
     public void setUp() throws Exception {
-        normal = new NormalScoreDao();
-        normal.setDatabase("jdbc:sqlite:./testDB.db");
-        normal.createTable();
+        easy = new EasyScoreDao();
+        easy.setDatabase("jdbc:sqlite:./testDB.db");
+        easy.createTable();
     }
     
     @After
     public void tearDown() {
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlite:./testDB.db");
-            PreparedStatement stmt = connection.prepareStatement("DROP TABLE IF EXISTS NormalScores");
+            PreparedStatement stmt = connection.prepareStatement("DROP TABLE IF EXISTS EasyScores");
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -38,15 +38,15 @@ public class NormalScoreDaoTest {
     
     @Test
     public void listReturnsAList() {
-        boolean works = normal.list() instanceof List;
+        boolean works = easy.list() instanceof List;
         assertTrue(works);
     }
     
     @Test
     public void createAddsARowToTheDatabase() {
-        int start = normal.list().size();
-        normal.create(new Score(0, "aaa", 100));
-        int end = normal.list().size();
+        int start = easy.list().size();
+        easy.create(new Score(0, "aaa", 100));
+        int end = easy.list().size();
         assertTrue(end == start + 1);
     }
     

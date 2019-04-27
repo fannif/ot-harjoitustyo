@@ -1,4 +1,4 @@
-package domain;
+package sudoku.domain;
 
 
 import static org.junit.Assert.assertTrue;

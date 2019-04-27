@@ -107,12 +107,12 @@ public class Sudoku {
      */
     public boolean fillRestOfGrid(int row, int column) {
 
-        if (column >= 9 && row < 8) {
+        if (column > 8 && row < 8) {
             row++;
             column = 0;
         }
 
-        if (column >= 9 && row >= 9) {
+        if (column > 8 && row > 8) {
             return true;
         }
 
@@ -121,13 +121,10 @@ public class Sudoku {
         } else if (row > 2 && row < 6 && column == 3) {
             column += 3;
         } else {
-            // If column == 6 we will be in the last box
-            // which is one of the diagonals, so skip to
-            // next row, because we don't wanna touch it
             if (column == 6 && row > 5) {
                 row++;
                 column = 0;
-                if (row >= 9) {
+                if (row > 8) {
                     return true;
                 }
             }

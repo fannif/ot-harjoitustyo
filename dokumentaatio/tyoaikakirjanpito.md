@@ -23,5 +23,6 @@
 |       | 0,5  | Tehtiin pieniä muutoksia. Esimerkiksi korjattiin bugi, jossa samasta sudokusta voi tallentaa monta tulosta. |
 |       | 2,6  | Jaettiin Sudokun isOk-metodi pienempiin osiin. Jatkettiin arkkitehtuurikuvausta. |
 |       | 0,5  | Kirjoitettiin käyttöohje. |
-| Yht.  | 28,3 | |
+| 27.4. | 1,5  | Muokattiin testipakkausten nimiä. Siistittiin hiukan koodia. Kirjoitettiin testidokumentti. |
+| Yht.  | 29,8 | |
 
