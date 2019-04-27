@@ -280,6 +280,7 @@ public class UserInterface extends Application {
         });
         
         primaryStage.setScene(startScene);
+        primaryStage.setTitle("Sudoku");
         primaryStage.show();
     }
     
