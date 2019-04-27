@@ -1,4 +1,4 @@
-## Sudoku: Alustava määrittelydokumentti
+## Määrittelydokumentti
 
 ### Sovelluksen tarkoitus
 Sovellus on peli. Siinä on tarkoitus täyttää 9x9 -kokoisia ruudukoita numeroilla yhdestä yhdeksään niin, että kullakin vaaka- ja pystyrivillä on kukin numero vain kerran. Ruudukko koostuu myös yhdeksästä 3x3:n ruudun pikkuruudukoista, joissa kussakin saa olla kukin luku yhdestä yhdeksään vain kerran.
