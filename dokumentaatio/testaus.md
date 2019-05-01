@@ -13,7 +13,7 @@ EasyScoreDao- ja NormalScoreDao-luokkien toimintaa on testattu testipakkauksen s
 #### Testikattavuus
 Tällä hetkellä sovelluksen DAO-puolen rivikattavuus on 90 prosenttia ja haarautumakattavuus 100 prosenttia. Sovelluslogiikan rivikattavuus on 98 prosenttiaa ja haarautumakattavuus 95 prosenttia. Käyttöliittymää lukuunottamatta sovelluksen kokonaisrivikattavuus on 96 prosenttia ja haarautumakattavuus 95 prosenttia.
 
-DAO-puolella testaamattomat tilanteet ovat sellaiset, joissa käsitellään SQLException. Sovelluslogiikan puolelta testaamatta jäi Sudoku-luokasta tilanne, jossa fillRestOfGrid-metodissa ollaan alussa jo käsitelty kaikki sudokun jäljellä olleet ruudut.
+DAO-puolella testaamattomat tilanteet ovat sellaiset, joissa käsitellään SQLException. Sovelluslogiikan puolelta testaamatta jäi Sudoku-luokasta tilanne, jossa fillRestOfGrid-metodissa ollaan rekursion alussa jo käsitelty kaikki sudokun jäljellä olleet ruudut.
 
 ### Manuaalinen testaus
 Sovelluksen käyttöliittymää testattiin manuaalisesti käyttämällä ohjelmaa, ja kokeilemalla käydä läpi erilaisia tilanteita, joita sovelluksen käytössä voi syntyä. Samalla testattiin sovelluksen toimivuutta kokonaisuutena. Näin suoritettiin siis järjestelmätestaus.
@@ -25,7 +25,7 @@ Ohjelmaa on testattu simuloimalla tilannetta, jossa sovellus ladattiin netistä 
 Sovelluksen kaikki toiminnallisuudet pyrittiin käymään testauksessa mahdollisimman tarkasti läpi. Kokeilemalla varmistettiin myös, ettei ennätystä tallennettaessa tule virhetilannetta, jos käyttäjä yrittää syöttää liian pitkän tai lyhyen nimimerkin, ja ettei sudokun tarkistuksessa tule virhetilannetta, jos käyttäjä on syöttänyt sudokuun epäkelpoja arvoja.
 
 ### Sovelluksen laatuongelmat
-Testauksessa käytetty testitietokanta ei ole tilapäinen tiedosto. Niinpä mikäli sen olemassa olo häiritsee, sen joutuu poistamaan aina testien ajamisen jälkeen itse uudestaan. Kuitenkaan kooltaan se ei ole iso, joten sen tilanviennin ei pitäisi olla ongelma.
+Testauksessa käytetty testitietokanta ei ole tilapäinen tiedosto. Niinpä mikäli sen olemassaolo häiritsee, sen joutuu poistamaan aina testien ajamisen jälkeen itse uudestaan. Kuitenkaan kooltaan se ei ole iso, joten sen tilanviennin ei pitäisi olla ongelma.
 
 Sovellukseen ei ole ohjelmoitu juurikaan varsinaisia virheilmoituksia. Ainoat virheilmoituksen tyyliset ilmoitukset liittyvät virheelliseen nimimerkkiin sitä syöttäessä sekä väärin menneeseen sudokuun. Tämä johtuu siitä, että sovellusta testatessa ei olla törmätty varsinaisiin virheilmoitusta vaativiin virheisiin. Kuitenkin on mahdollista, että jokin virhe, jolle olisi hyvä olla virheilmoitus, on jäänyt huomaamatta.
 
