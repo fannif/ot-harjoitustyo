@@ -17,7 +17,7 @@ Kyseessä on peli, johon ei tarvita muita käyttäjärooleja kuin _normaali käy
 - Voitaisiin luoda lisää vaikeustasoja (esimerkiksi 6x6-sudokut, joissa katsotaan vain, ettei samoilla riveillä tai sarakkeilla ilmene samaa numeroa useasti).
 	- Tällöin voitaisiin aloitusnäyttöön laittaa pelaamista varten yleisesti _Pelaa_-nappi, jota painamalla käyttäjä pääsisi valitsemaan vaikeustason ja sudokun koon.
 	- Myös ennätyksiä olisi nyt erikseen eri sudokukokoihin ja vaikeustasoihin.
-- Peliin voitaisiin lisätä ääniefektejä.
+- Peliin voitaisiin lisätä ääniefektejä tai taustamusiikkia.
 - Voitaisiin mahdollistaa pelitilanteen tallentaminen.
 - Käyttäjälle voitaisiin antaa mahdollisuus valita sudokun ja näkymän taustan väri.
 - Käyttäjälle voitaisiin antaa mahdollisuus valita ikkunan automaattinen koko.
