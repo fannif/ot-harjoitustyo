@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -66,7 +67,7 @@ public class UserInterface extends Application {
         
         startLayout.setCenter(startMenu);
         
-        Scene startScene = new Scene(startLayout, 600, 600);
+        Scene startScene = new Scene(startLayout, 800, 600);
         
         BorderPane sudokuLayout = new BorderPane();
         
@@ -104,7 +105,7 @@ public class UserInterface extends Application {
         sudokuLayout.setTop(sudokuTop);
         sudokuLayout.setStyle("-fx-background-color: #dcffff");
         
-        Scene sudokuScene = new Scene(sudokuLayout, 600, 600);
+        Scene sudokuScene = new Scene(sudokuLayout, 800, 600);
         
         BorderPane recordsLayout = new BorderPane();
         recordsLayout.setPadding(new Insets(20));
@@ -136,6 +137,7 @@ public class UserInterface extends Application {
         easyScoresList.getChildren().add(easyTitle);
         
         highScoreLists.getChildren().addAll(normalScoresList, easyScoresList);
+        highScoreLists.setAlignment(Pos.CENTER);
         
         highScores.getChildren().add(highScoreLists);
         
@@ -143,7 +145,7 @@ public class UserInterface extends Application {
         recordsLayout.setTop(back2);
         recordsLayout.setStyle("-fx-background-color: #ffffdc");
         
-        Scene recordsScene = new Scene(recordsLayout, 600, 600);
+        Scene recordsScene = new Scene(recordsLayout, 800, 600);
         
         easyPlay.setOnAction((event) -> {
             sudoku.setDifficulty(25);
@@ -292,7 +294,9 @@ public class UserInterface extends Application {
      * @param sudokuGrid The visual representation of the sudoku.
      */
     public void showSudoku(Sudoku sudoku, GridPane sudokuGrid) {
-
+            
+            int maxCharacters = 1;
+        
             for (int i=1; i <= 9; i++) {
                 for (int j=1; j <= 9; j++) {
                     if (sudoku.getValue(i-1, j-1) == 0) {
@@ -300,6 +304,9 @@ public class UserInterface extends Application {
                         square.setMaxSize(40,40);
                         square.setMinSize(40,40);
                         square.setFont(Font.font("Verdana", 20));
+                        
+                        square.setTextFormatter(new TextFormatter<>(change ->
+                            change.getControlNewText().length() <= maxCharacters ? change: null));
                         
                         int row = i-1;
                         int column = j-1;

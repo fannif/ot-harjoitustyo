@@ -26,5 +26,6 @@
 | 27.4. | 1,5  | Muokattiin testipakkausten nimiä. Siistittiin hiukan koodia. Kirjoitettiin testidokumentti. |
 |       | 0,4  | Täydennettiin dokumentaatiota. |
 | 1.5.  | 0,8  | JavaFX:n konfigurointia, jotta saatiin sovellus toimimaan, kun JavaFX lakkasi toimimasta. Päivitettiin Javadocia. |
-| Yht.  | 31,0 | |
+|       | 0,3  | Sudokuun voi nyt täyttää yhteen ruutuun korkeintaan yhden merkin kerrallaan. Säädettiin ulkonäköä. |
+| Yht.  | 31,3 | |
 
