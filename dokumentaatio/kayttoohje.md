@@ -1,7 +1,7 @@
 ## Käyttöohje
 
 ### Ohjelman käynnistys
-Ohjelma käynnistetään menemällä ensin terminaalissa kansioon, johon ohjelman jar-tiedosto on ladattu. Tämän jälkeen ajetaan komento java -jar SudokuGame.jar. Tällöin ohjelma käynnistyy.
+Ohjelma käynnistetään menemällä ensin terminaalissa kansioon, johon ohjelman jar-tiedosto on ladattu. Tämän jälkeen ajetaan komento `java -jar SudokuGame.jar`. Tällöin ohjelma käynnistyy.
 
 ### Pelaaminen
 Ohjelman käynnistyttyä avautuu alkuvalikko. Sudokun pelaaminen aloitetaan painamalla nappia Play game (easy) tai Play game (normal), sen mukaan haluaako peliä pelata haastavammalla vai vähemmän haastavalla vaikeusasteella. Vaikeusasteiden ero on, että helpossa sudokussa pelaajan täytettäväksi on jätetty vähemmän ruutuja.
