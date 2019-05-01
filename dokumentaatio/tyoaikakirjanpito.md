@@ -27,5 +27,6 @@
 |       | 0,4  | Täydennettiin dokumentaatiota. |
 | 1.5.  | 0,8  | JavaFX:n konfigurointia, jotta saatiin sovellus toimimaan, kun JavaFX lakkasi toimimasta. Päivitettiin Javadocia. |
 |       | 0,3  | Sudokuun voi nyt täyttää yhteen ruutuun korkeintaan yhden merkin kerrallaan. Säädettiin ulkonäköä. |
-| Yht.  | 31,3 | |
+|       | 0,1  | Päivitettiin komentorivitoimintojen listaa. |
+| Yht.  | 31,4 | |
 
