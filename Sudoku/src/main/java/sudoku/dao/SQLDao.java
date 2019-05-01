@@ -12,19 +12,19 @@ import sudoku.domain.Score;
 public interface SQLDao {
     
     /**
-     * Method that creates the Scores-table into the database if it does not yet exist.
+     * Method that creates the table into the database if it does not yet exist.
      * @throws SQLException if an error is faced when trying to connect to the database or carry out the SQL-statement.
      */
     public void createTable() throws SQLException;
     
     /**
-     * Method adds a new score to the database.
+     * Method adds a new score to the database table.
      * @param score The Score-object's initials and time will be used for the new row to be added to the database.
      */
     public void create(Score score);
     
     /**
-     * Method used to list the scores in the database, sorted by time in an ascending order.
+     * Method used to list the scores in the database table, sorted by time in an ascending order.
      * @return Returns a list of the scores in the database sorted by column time in an ascending order.
      */
     public List<Score> list();

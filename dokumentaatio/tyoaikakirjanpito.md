@@ -24,6 +24,7 @@
 |       | 2,6  | Jaettiin Sudokun isOk-metodi pienempiin osiin. Jatkettiin arkkitehtuurikuvausta. |
 |       | 0,5  | Kirjoitettiin käyttöohje. |
 | 27.4. | 1,5  | Muokattiin testipakkausten nimiä. Siistittiin hiukan koodia. Kirjoitettiin testidokumentti. |
-|       | 0,4  | Täydennettiin dokumentaaiota. |
-| Yht.  | 30,2 | |
+|       | 0,4  | Täydennettiin dokumentaatiota. |
+| 1.5.  | 0,8  | JavaFX:n konfigurointia, jotta saatiin sovellus toimimaan, kun JavaFX lakkasi toimimasta. Päivitettiin Javadocia. |
+| Yht.  | 31,0 | |
 
