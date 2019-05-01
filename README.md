@@ -1,6 +1,6 @@
 # Sudoku
 
-Sovellus on perinteinen sudokupeli, jota pystyy pelaamaan ilman sisäänkirjautumista. Sovellus generoi käyttäjälle pelejä, joista se pitää yllä suoritusaikaa. Suoritusajan perusteella parhaat suoritukset lisätään ennätyksiin, joita on myös mahdollista tarkastella sovelluksessa. Tarkempi kuvaus löytyy sovelluksen määrittelydokumentista.
+Sovellus on perinteinen sudokupeli, jota pystyy pelaamaan ilman sisäänkirjautumista. Sovellus generoi käyttäjälle pelejä, joiden suoritusajasta se pitää kirjaa. Suoritusajan perusteella parhaat suoritukset luetellaan ennätyksissä, mikäli käyttäjä haluaa suorituksensa tallentaa. Ennätyksiä on mahdollista tarkastella sovelluksessa. Tarkempi kuvaus löytyy sovelluksen määrittelydokumentista.
 
 ### Dokumentaatio
 
